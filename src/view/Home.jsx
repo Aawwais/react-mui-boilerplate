@@ -1,19 +1,21 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
-import { decrement, increment } from '../store/portfolio/porfolioSlice';
+import { decrement, increment } from '../store/actions/authAction';
 import { Box, Button, Typography } from '@mui/material';
 
 const Home = () => {
   let dispatch=useDispatch()
-  const {counter}=useSelector((state)=>state.portfolio)
+  const {counter}=useSelector((state)=>state.authUser)
 
   const handleIncrement = () => {
-    dispatch(increment())
+    let count=counter+1
+    dispatch(increment(count))
   };
 
   const handleDecrement = () => {
-    dispatch(decrement())
+    let count=counter-1
+    dispatch(decrement(count))
   };
   const logout = () => {
     dispatch(logoutUser());
